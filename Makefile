@@ -6,7 +6,7 @@
 #    By: msoria-j <msoria-j@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 17:34:47 by msoria-j          #+#    #+#              #
-#    Updated: 2023/04/13 16:21:08 by msoria-j         ###   ########.fr        #
+#    Updated: 2023/04/13 16:36:16 by msoria-j         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,9 +79,11 @@ $(NAME):		pre-build $(OBJS)
 				ar rcs $(NAME) $(OBJS)
 
 clean:
+				echo $(RED)$(ITALIC) "	cleaning object files..." $(NONE)
 				$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean:			clean
+				echo $(RED)$(ITALIC) "	removing $(NAME) file..." $(NONE)
 				$(RM) $(NAME)
 
 re:				fclean $(NAME)
