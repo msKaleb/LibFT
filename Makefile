@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msoria-j <msoria-j@student.42.fr>          +#+  +:+       +#+         #
+#    By: msoria-j < msoria-j@student.42urduliz.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 17:34:47 by msoria-j          #+#    #+#              #
-#    Updated: 2023/04/13 16:49:28 by msoria-j         ###   ########.fr        #
+#    Updated: 2023/04/15 12:34:25 by msoria-j         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,16 +50,28 @@ RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
 
 NAME			= libft.a
+				
+OS				= $(shell uname -s)
+
+# If on Linux, use the flag -e for echo command
+ifeq ($(OS), Linux)
+	ECHO = echo -e
+else
+	ECHO = echo
+endif
 
 #Define colors for output
-NONE='\033[0m'
-GREEN='\033[32m'
-GRAY='\033[2;37m'
-RED='\033[31m'
-CYAN='\033[36m'
-MAGENTA="\033[35m"
-BLUE="\033[34m"
-ITALIC="\033[3m"
+COLOR='\033['
+NONE=$(COLOR)0m
+GREEN=$(COLOR)32m
+GRAY=$(COLOR)37m
+RED=$(COLOR)31m
+CYAN=$(COLOR)36m
+MAGENTA=$(COLOR)35m
+BLUE=$(COLOR)34m
+ITALIC=$(COLOR)3m
+BOLD=$(COLOR)1m
+BRIGHT_WHITE=$(COLOR)97m
 
 ifndef VERBOSE
 	MAKEFLAGS += --silent
@@ -69,27 +81,29 @@ endif
 all:			$(NAME)
 
 pre-build:
-				@echo $(CYAN) "$$HEADER" $(NONE)
-				@echo $(GREEN)$(ITALIC) "	Compiling $(NAME)..."$(NONE)
+				$(ECHO) $(CYAN) "$$HEADER" $(NONE)
+				$(ECHO) $(GREEN)$(ITALIC) "	Compiling $(NAME)..."$(NONE)
 
 pre-build-bonus:
-				@echo $(BLUE) "$$HEADER" $(NONE)
-				@echo $(MAGENTA)$(ITALIC) "	Compiling $(NAME) (Bonus)..."$(NONE)
+				$(ECHO) $(BLUE) "$$HEADER" $(NONE)
+				$(ECHO) $(MAGENTA)$(ITALIC) "	Compiling $(NAME) (Bonus)..."$(NONE)
 				
 $(NAME):		pre-build $(OBJS)
 				ar rcs $(NAME) $(OBJS)
+				$(ECHO) $(BRIGHT_WHITE)$(BOLD)"\tDone!"$(NONE)
 
 clean:
-				@echo $(RED)$(ITALIC) "	cleaning object files..." $(NONE)
+				$(ECHO) $(RED)$(ITALIC) "	cleaning object files..." $(NONE)
 				$(RM) $(OBJS) $(BONUS_OBJS)
 
 fclean:			clean
-				@echo $(RED)$(ITALIC) "	removing $(NAME) file..." $(NONE)
+				$(ECHO) $(RED)$(ITALIC) "	removing $(NAME) file..." $(NONE)
 				$(RM) $(NAME)
 
 re:				fclean $(NAME)
 
 bonus:			pre-build-bonus $(OBJS) $(BONUS_OBJS)
 				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+				$(ECHO) $(BRIGHT_WHITE)$(BOLD)"\tDone!"$(NONE)
 
 .PHONY:			all clean fclean re bonus
