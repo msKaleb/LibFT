@@ -13,7 +13,7 @@
 int	ft_isprime(int n)
 {
 	int	i;
-	
+
 	if (n < 2)
 		return (0);
 	i = 1;
