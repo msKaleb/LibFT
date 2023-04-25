@@ -6,7 +6,7 @@
 #    By: msoria-j < msoria-j@student.42urduliz.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 17:34:47 by msoria-j          #+#    #+#              #
-#    Updated: 2023/04/15 16:09:35 by msoria-j         ###   ########.fr        #
+#    Updated: 2023/04/25 11:12:06 by msoria-j         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS			=	ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
 					ft_strdup.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
 					ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c\
 					ft_strnstr.c ft_strrchr.c ft_strtrim.c \
-					ft_substr.c ft_tolower.c ft_toupper.c\
+					ft_substr.c ft_tolower.c ft_toupper.c ft_atoibase.c \
 					ft_fprintf/ft_fprintf.c ft_fprintf/ft_itoa_u.c \
 					ft_fprintf/print_var.c ft_fprintf/change_base.c \
 					get_next_line/get_next_line_bonus.c \
